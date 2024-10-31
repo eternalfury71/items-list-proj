@@ -10,15 +10,17 @@ const limit = 4;
 
 const fetchData = async () => {
   try {
-    loader.classList.remove("loader--hidden"); // Show loader
+    loader.classList.remove("loader--hidden");
+
     const res = await fetch("https://fakestoreapi.com/products");
     const data = await res.json();
+
     allItems = data;
     displayProducts();
   } catch (err) {
-    console.error("Error fetching data:", err);
+    console.error("Error:", err);
   } finally {
-    loader.classList.add("loader--hidden"); // Hide loader
+    loader.classList.add("loader--hidden");
   }
 };
 
@@ -95,4 +97,5 @@ const displayProducts = () => {
 };
 
 fetchData();
+
 loadMoreButton.addEventListener("click", displayProducts);
